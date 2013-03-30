@@ -25,6 +25,13 @@
 		6547F4F41706BAFD007D90AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6547F4CC1706BAFD007D90AA /* Foundation.framework */; };
 		6547F4FC1706BAFD007D90AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6547F4FA1706BAFD007D90AA /* InfoPlist.strings */; };
 		6547F4FF1706BAFD007D90AA /* LatinOWL4iPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547F4FE1706BAFD007D90AA /* LatinOWL4iPadTests.m */; };
+		654B6083170721E200A6B93D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 654B607A170721E200A6B93D /* Reachability.m */; };
+		654B6084170721E200A6B93D /* OWLMorphData.m in Sources */ = {isa = PBXBuildFile; fileRef = 654B607C170721E200A6B93D /* OWLMorphData.m */; };
+		654B6085170721E200A6B93D /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 654B607E170721E200A6B93D /* XPathResultNode.m */; };
+		654B6086170721E200A6B93D /* OWLMorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 654B6080170721E200A6B93D /* OWLMorphDefinitionCell.m */; };
+		654B6087170721E200A6B93D /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 654B6082170721E200A6B93D /* OWLLemmaTableCell.m */; };
+		654B60891707225D00A6B93D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 654B60881707225D00A6B93D /* libxml2.dylib */; };
+		654B608B1707226700A6B93D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654B608A1707226700A6B93D /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +71,19 @@
 		6547F4FB1706BAFD007D90AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6547F4FD1706BAFD007D90AA /* LatinOWL4iPadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatinOWL4iPadTests.h; sourceTree = "<group>"; };
 		6547F4FE1706BAFD007D90AA /* LatinOWL4iPadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatinOWL4iPadTests.m; sourceTree = "<group>"; };
+		654B6078170721E200A6B93D /* OWLMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDataObserver.h; sourceTree = "<group>"; };
+		654B6079170721E200A6B93D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		654B607A170721E200A6B93D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		654B607B170721E200A6B93D /* OWLMorphData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphData.h; sourceTree = "<group>"; };
+		654B607C170721E200A6B93D /* OWLMorphData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMorphData.m; sourceTree = "<group>"; };
+		654B607D170721E200A6B93D /* XPathResultNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathResultNode.h; sourceTree = "<group>"; };
+		654B607E170721E200A6B93D /* XPathResultNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathResultNode.m; sourceTree = "<group>"; };
+		654B607F170721E200A6B93D /* OWLMorphDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDefinitionCell.h; sourceTree = "<group>"; };
+		654B6080170721E200A6B93D /* OWLMorphDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMorphDefinitionCell.m; sourceTree = "<group>"; };
+		654B6081170721E200A6B93D /* OWLLemmaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLemmaTableCell.h; sourceTree = "<group>"; };
+		654B6082170721E200A6B93D /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
+		654B60881707225D00A6B93D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		654B608A1707226700A6B93D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654B608B1707226700A6B93D /* SystemConfiguration.framework in Frameworks */,
+				654B60891707225D00A6B93D /* libxml2.dylib in Frameworks */,
 				6547F4CB1706BAFD007D90AA /* UIKit.framework in Frameworks */,
 				6547F4CD1706BAFD007D90AA /* Foundation.framework in Frameworks */,
 				6547F4CF1706BAFD007D90AA /* CoreGraphics.framework in Frameworks */,
@@ -93,6 +115,8 @@
 		6547F4BE1706BAFD007D90AA = {
 			isa = PBXGroup;
 			children = (
+				654B608A1707226700A6B93D /* SystemConfiguration.framework */,
+				654B60881707225D00A6B93D /* libxml2.dylib */,
 				6547F4D01706BAFD007D90AA /* LatinOWL4iPad */,
 				6547F4F71706BAFD007D90AA /* LatinOWL4iPadTests */,
 				6547F4C91706BAFD007D90AA /* Frameworks */,
@@ -123,6 +147,17 @@
 		6547F4D01706BAFD007D90AA /* LatinOWL4iPad */ = {
 			isa = PBXGroup;
 			children = (
+				654B6078170721E200A6B93D /* OWLMorphDataObserver.h */,
+				654B6079170721E200A6B93D /* Reachability.h */,
+				654B607A170721E200A6B93D /* Reachability.m */,
+				654B607B170721E200A6B93D /* OWLMorphData.h */,
+				654B607C170721E200A6B93D /* OWLMorphData.m */,
+				654B607D170721E200A6B93D /* XPathResultNode.h */,
+				654B607E170721E200A6B93D /* XPathResultNode.m */,
+				654B607F170721E200A6B93D /* OWLMorphDefinitionCell.h */,
+				654B6080170721E200A6B93D /* OWLMorphDefinitionCell.m */,
+				654B6081170721E200A6B93D /* OWLLemmaTableCell.h */,
+				654B6082170721E200A6B93D /* OWLLemmaTableCell.m */,
 				6547F4D91706BAFD007D90AA /* OWLAppDelegate.h */,
 				6547F4DA1706BAFD007D90AA /* OWLAppDelegate.m */,
 				6547F4E21706BAFD007D90AA /* MainStoryboard.storyboard */,
@@ -286,6 +321,11 @@
 				6547F4E71706BAFD007D90AA /* OWLMasterViewController.m in Sources */,
 				6547F4EA1706BAFD007D90AA /* OWLDetailViewController.m in Sources */,
 				6517A2671706D68C002E7097 /* OWLSearchViewController.m in Sources */,
+				654B6083170721E200A6B93D /* Reachability.m in Sources */,
+				654B6084170721E200A6B93D /* OWLMorphData.m in Sources */,
+				654B6085170721E200A6B93D /* XPathResultNode.m in Sources */,
+				654B6086170721E200A6B93D /* OWLMorphDefinitionCell.m in Sources */,
+				654B6087170721E200A6B93D /* OWLLemmaTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,10 +436,13 @@
 		6547F5031706BAFD007D90AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinOWL4iPad/LatinOWL4iPad-Prefix.pch";
 				INFOPLIST_FILE = "LatinOWL4iPad/LatinOWL4iPad-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -407,10 +450,13 @@
 		6547F5041706BAFD007D90AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinOWL4iPad/LatinOWL4iPad-Prefix.pch";
 				INFOPLIST_FILE = "LatinOWL4iPad/LatinOWL4iPad-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

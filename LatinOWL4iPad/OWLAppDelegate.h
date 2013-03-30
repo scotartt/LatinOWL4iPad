@@ -7,9 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
 
-@interface OWLAppDelegate : UIResponder <UIApplicationDelegate>
+@class Reachability;
 
-@property (strong, nonatomic) UIWindow *window;
+static NSString *const hostName = @"www.perseus.tufts.edu";
+
+
+@interface OWLAppDelegate : UIResponder <UIApplicationDelegate> {
+        Reachability *hostReach;
+    }
+
+    @property(strong, nonatomic) UIWindow *window;
+    @property(strong, nonatomic) UIAlertView *netAlert;
+    @property(strong, nonatomic) UIStoryboard *storyBoard;
+
+    - (NSString *)stringFromStatus:(NetworkStatus)status;
 
 @end

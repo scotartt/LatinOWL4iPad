@@ -9,11 +9,9 @@
 #import "OWLMasterViewController.h"
 
 #import "OWLDetailViewController.h"
-
-@interface OWLMasterViewController () {
-        NSMutableArray *_objects;
-    }
-@end
+#import "OWLMorphData.h"
+#import "OWLLemmaTableCell.h"
+#import "OWLMorphDefinitionCell.h"
 
 
 @implementation OWLMasterViewController {
@@ -31,8 +29,6 @@
         [super viewDidLoad];
         self.navigationController.toolbarHidden = NO;
         self.detailViewController = (OWLDetailViewController *) [[self.splitViewController.viewControllers lastObject] topViewController];
-
-        _objects = [NSMutableArray arrayWithObjects:@"Row 1", @"Row 2", @"Row 3", @"Row 4", @"Row 5", nil];
     }
 
 
@@ -43,12 +39,6 @@
 
 
     - (void)insertNewObject:(id)sender {
-        if (!_objects) {
-            _objects = [[NSMutableArray alloc] init];
-        }
-        [_objects insertObject:[NSDate date] atIndex:0];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 
 
@@ -63,6 +53,18 @@
     - (void)doSearch:(NSString *)value {
         NSLog(@"Doing the search %@", value);
         [self dismissPopover:self];
+        [self handleSearch:value];
+    }
+
+
+    - (void)handleSearch:(NSString *)value {
+        [self.activityIndicator startAnimating];
+        OWLMorphData *searchLatinMorphData = [OWLMorphData data];
+        [self setLatinMorphData:searchLatinMorphData];
+        // clear the table
+        [self.tableView reloadData];
+        NSLog(@"User searched for '%@'", value);
+        [searchLatinMorphData searchLatin:value withObserver:self];
     }
 
 #pragma mark - Segues
@@ -102,40 +104,107 @@
         [searchPopover dismissPopoverAnimated:YES];
     }
 
+#pragma OWLMorphDataObserver methods
+
+    - (void)refreshViewData:(OWLMorphData *)latinMorph {
+        if (latinMorph == [self latinMorphData]) {
+            // this is the latest instance of search...
+            // [self.aboutButton setHidden:YES];
+            NSLog(@"refreshViewData called from URL %@", latinMorph.urlString);
+            [self.activityIndicator stopAnimating];
+            [self.tableView reloadData];
+        }
+    }
+
+
+    - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection {
+        NSLog(@"Connection Error = %@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error"
+                                                        message:error.localizedDescription
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+
+
+    - (void)showError:(NSException *)exception forSearchTerm:(NSString *)searchTerm {
+        NSLog(@"For search term=%@ - got error = %@", searchTerm, [exception description]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(NSString *) [exception.userInfo objectForKey:@"title"]
+                                                        message:(NSString *) [exception.userInfo objectForKey:@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 
 #pragma mark - Table View
 
     - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-        return _objects.count;
+        NSLog(@"called numberOfSectionsInTableView:%@", tableView);
+        return [[[self latinMorphData] lemmas] count];
     }
 
 
     - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-        return 2;
+        NSLog(@"called numberOfRowsInSection:%d", section);
+        // Number of rows is the number of found items for each lemma.
+        NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:(NSUInteger) section];
+        NSDictionary *definitions = [[self latinMorphData] definitions];
+        if (definitions != nil) {
+            NSDictionary *lemmaData = [definitions objectForKey:lemmaId];
+            if (lemmaData != nil) {
+                NSArray *formTable = [lemmaData objectForKey:KEY_TABLE];
+                if (formTable != nil && [formTable count] > 0) {
+                    return [formTable count] + 1;
+                }
+            }
+        }
+        return 0;
     }
 
 
     - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LemmaTableCell" forIndexPath:indexPath];
+        int row = [indexPath row];
+        int section = [indexPath section];
+        NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
+        NSLog(@"called cellForRowAtIndexPath:%d,%d %@", section, row, lemmaId);
+        if (row == 0) {
+            NSString *cellIdentifier = @"LemmaTableCell";
+            OWLLemmaTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            if (cell == nil) {
+                cell = [[OWLLemmaTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            }
 
-        NSString *object = _objects[indexPath.row];
-        cell.textLabel.text = [object description];
-        return cell;
+            NSString *titleText = [self.latinMorphData theHeaderString:lemmaId];
+            UILabel *titleLabel = [cell lemmaTitle];
+            [titleLabel setText:titleText];
+            NSString *meaningText = [self.latinMorphData theMeaning:lemmaId];
+            UILabel *meaningCell = [cell lemmaMeaning];
+            [meaningCell setText:meaningText];
+            NSLog(@"%@ means %@", titleText, meaningText);
+            return cell;
+        } else if (row < [self tableView:tableView numberOfRowsInSection:section]) {
+            NSString *cellIdentifier = @"MorphTableCell";
+            OWLMorphDefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            if (cell == nil) {
+                cell = [[OWLMorphDefinitionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            }
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            int indexId = row - 1; // the meaning of the lemma is at the first cell position, therefore subtract one from the row number.
+            NSString *form = [self.latinMorphData theForm:lemmaId ofIndex:indexId];
+            NSString *parsed = [self.latinMorphData theFormParsed:lemmaId ofIndex:indexId];
+            if (form == nil || parsed == nil || [form isEqualToString:@""] || [parsed isEqualToString:@""]) {
+                return cell;
+            }
+            UILabel *morphTitleLabel = [cell morphTitle];
+            [morphTitleLabel setText:form];
+            UILabel *morphParsing = [cell morphParsing];
+            [morphParsing setText:parsed];
+            return cell;
+        } else {
+            return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"empty"];
+        }
     }
 
 
     - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
         return NO;
-    }
-
-
-    - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-        if (editingStyle == UITableViewCellEditingStyleDelete) {
-            [_objects removeObjectAtIndex:indexPath.row];
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
     }
 
 /*
@@ -153,11 +222,6 @@
     return YES;
 }
 */
-
-    - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-        NSDate *object = _objects[indexPath.row];
-        self.detailViewController.detailItem = object;
-    }
 
 
     - (void)viewDidUnload {

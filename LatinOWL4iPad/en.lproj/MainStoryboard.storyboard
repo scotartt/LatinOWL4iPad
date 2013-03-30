@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="298"/>
+            <point key="canvasLocation" x="1048" y="247"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
@@ -84,8 +84,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <color key="separatorColor" red="0.45490196350000001" green="0.45490196350000001" blue="0.45490196350000001" alpha="1" colorSpace="deviceRGB"/>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" hidesWhenStopped="YES" style="whiteLarge" id="duN-qS-LTw">
+                            <rect key="frame" x="0.0" y="133" width="320" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.25097998980000003" blue="0.50196099279999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="color" red="0.96373498440000005" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LemmaTableCell" textLabel="tIi-5l-S0i" detailTextLabel="Lel-bU-Z0j" style="IBUITableViewCellStyleSubtitle" id="ZSw-0O-9Pw">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LemmaTableCell" textLabel="tIi-5l-S0i" detailTextLabel="Lel-bU-Z0j" style="IBUITableViewCellStyleSubtitle" id="ZSw-0O-9Pw" customClass="OWLLemmaTableCell">
                                 <rect key="frame" x="0.0" y="34" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -107,8 +113,12 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="lemmaMeaning" destination="Lel-bU-Z0j" id="IKT-Qp-ZRG"/>
+                                    <outlet property="lemmaTitle" destination="tIi-5l-S0i" id="oQG-WP-VrT"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MorphTableCell" textLabel="DN7-HO-fsL" detailTextLabel="Pmn-KY-60H" style="IBUITableViewCellStyleValue1" id="ySv-xw-W2h">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MorphTableCell" textLabel="DN7-HO-fsL" detailTextLabel="Pmn-KY-60H" style="IBUITableViewCellStyleValue1" id="ySv-xw-W2h" customClass="OWLMorphDefinitionCell">
                                 <rect key="frame" x="0.0" y="79" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -131,6 +141,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="morphParsing" destination="Pmn-KY-60H" id="VEo-d4-umL"/>
+                                    <outlet property="morphTitle" destination="DN7-HO-fsL" id="Jre-R5-AJk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -149,6 +163,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="duN-qS-LTw" id="WvO-2u-hHM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
@@ -264,8 +281,25 @@
                 <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="OWLLemmaTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLLemmaTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lemmaMeaning" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lemmaTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="OWLMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLMasterViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="OWLMorphDefinitionCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLMorphDefinitionCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="morphParsing" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="morphTitle" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="OWLSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLSearchViewController.h"/>
