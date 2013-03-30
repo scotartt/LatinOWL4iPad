@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6517A2671706D68C002E7097 /* OWLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517A2661706D68C002E7097 /* OWLSearchViewController.m */; };
 		6547F4CB1706BAFD007D90AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6547F4CA1706BAFD007D90AA /* UIKit.framework */; };
 		6547F4CD1706BAFD007D90AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6547F4CC1706BAFD007D90AA /* Foundation.framework */; };
 		6547F4CF1706BAFD007D90AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6547F4CE1706BAFD007D90AA /* CoreGraphics.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6517A2651706D68C002E7097 /* OWLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLSearchViewController.h; sourceTree = "<group>"; };
+		6517A2661706D68C002E7097 /* OWLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLSearchViewController.m; sourceTree = "<group>"; };
 		6547F4C71706BAFD007D90AA /* LatinOWL4iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatinOWL4iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6547F4CA1706BAFD007D90AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6547F4CC1706BAFD007D90AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,6 +131,8 @@
 				6547F4E81706BAFD007D90AA /* OWLDetailViewController.h */,
 				6547F4E91706BAFD007D90AA /* OWLDetailViewController.m */,
 				6547F4D11706BAFD007D90AA /* Supporting Files */,
+				6517A2651706D68C002E7097 /* OWLSearchViewController.h */,
+				6517A2661706D68C002E7097 /* OWLSearchViewController.m */,
 			);
 			path = LatinOWL4iPad;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				6547F4DB1706BAFD007D90AA /* OWLAppDelegate.m in Sources */,
 				6547F4E71706BAFD007D90AA /* OWLMasterViewController.m in Sources */,
 				6547F4EA1706BAFD007D90AA /* OWLDetailViewController.m in Sources */,
+				6517A2671706D68C002E7097 /* OWLSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +468,7 @@
 				6547F5041706BAFD007D90AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6547F5051706BAFD007D90AA /* Build configuration list for PBXNativeTarget "LatinOWL4iPadTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +477,7 @@
 				6547F5071706BAFD007D90AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

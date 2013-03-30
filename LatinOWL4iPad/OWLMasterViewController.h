@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OWLSearchViewController.h"
 
 @class OWLDetailViewController;
 
-@interface OWLMasterViewController : UITableViewController
+@interface OWLMasterViewController : UITableViewController <OWLSearchViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) OWLDetailViewController *detailViewController;
 
