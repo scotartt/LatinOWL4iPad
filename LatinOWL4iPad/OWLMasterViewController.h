@@ -16,8 +16,8 @@
 
 @interface OWLMasterViewController : UITableViewController <OWLSearchViewControllerDelegate, UIPopoverControllerDelegate, OWLMorphDataObserver>
 
-@property (strong, nonatomic) OWLDetailViewController *detailViewController;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+    @property(strong, nonatomic) OWLDetailViewController *detailViewController;
+    @property(strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
     @property(nonatomic, strong) OWLMorphData *latinMorphData;
+
 @end

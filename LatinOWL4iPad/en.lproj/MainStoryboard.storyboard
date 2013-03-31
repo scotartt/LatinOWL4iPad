@@ -9,6 +9,7 @@
             <objects>
                 <navigationController id="3" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="6">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -33,30 +34,53 @@
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="27">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GaQ-3A-V7L">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="704" id="xqy-SZ-7Ja"/>
+                                </constraints>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4" id="1XL-Ec-3Bq"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-L5-KCe">
+                                <color key="color" red="0.0" green="0.25097998980000003" blue="0.50196099279999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="27" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CON-Cb-dBe"/>
-                            <constraint firstItem="27" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="LAk-gc-aCl"/>
-                            <constraint firstItem="27" firstAttribute="centerY" secondItem="26" secondAttribute="centerY" type="default" id="fbb-bQ-YI1"/>
+                            <constraint firstItem="Tyv-L5-KCe" firstAttribute="centerX" secondItem="GaQ-3A-V7L" secondAttribute="centerX" type="default" id="7zU-W9-eeX"/>
+                            <constraint firstItem="GaQ-3A-V7L" firstAttribute="top" secondItem="26" secondAttribute="top" type="default" id="Ga8-Uj-gtz"/>
+                            <constraint firstItem="Tyv-L5-KCe" firstAttribute="centerY" secondItem="26" secondAttribute="centerY" type="default" id="QHD-Bv-Rz9"/>
+                            <constraint firstItem="GaQ-3A-V7L" firstAttribute="trailing" secondItem="26" secondAttribute="trailing" type="default" id="Ruh-Rf-6xe"/>
+                            <constraint firstItem="GaQ-3A-V7L" firstAttribute="leading" secondItem="26" secondAttribute="leading" type="default" id="lti-tJ-kHX"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="53"/>
+                    <navigationItem key="navigationItem" title="Title" id="2L0-J4-J1l">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="fjQ-up-Szw">
+                            <connections>
+                                <action selector="goBack" destination="GaQ-3A-V7L" id="ETP-Yz-5MD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title=">" id="xZi-xL-Xby">
+                            <connections>
+                                <action selector="goForward" destination="GaQ-3A-V7L" id="c1O-pJ-Zin"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="27" id="29"/>
+                        <outlet property="activityIndicator" destination="Tyv-L5-KCe" id="8iz-Au-jag"/>
+                        <outlet property="webView" destination="GaQ-3A-V7L" id="a5z-cs-7aT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="247"/>
+            <point key="canvasLocation" x="1045" y="292"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
@@ -84,11 +108,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <color key="separatorColor" red="0.45490196350000001" green="0.45490196350000001" blue="0.45490196350000001" alpha="1" colorSpace="deviceRGB"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" hidesWhenStopped="YES" style="whiteLarge" id="duN-qS-LTw">
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="duN-qS-LTw">
                             <rect key="frame" x="0.0" y="133" width="320" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.0" green="0.25097998980000003" blue="0.50196099279999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="color" red="0.96373498440000005" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="color" red="0.0" green="0.25097998980000003" blue="0.50196099279999995" alpha="1" colorSpace="calibratedRGB"/>
                         </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LemmaTableCell" textLabel="tIi-5l-S0i" detailTextLabel="Lel-bU-Z0j" style="IBUITableViewCellStyleSubtitle" id="ZSw-0O-9Pw" customClass="OWLLemmaTableCell">
@@ -116,6 +139,7 @@
                                 <connections>
                                     <outlet property="lemmaMeaning" destination="Lel-bU-Z0j" id="IKT-Qp-ZRG"/>
                                     <outlet property="lemmaTitle" destination="tIi-5l-S0i" id="oQG-WP-VrT"/>
+                                    <segue destination="4" kind="replace" identifier="dictionaryView" splitViewControllerTargetIndex="1" id="FkZ-ia-1sF"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MorphTableCell" textLabel="DN7-HO-fsL" detailTextLabel="Pmn-KY-60H" style="IBUITableViewCellStyleValue1" id="ySv-xw-W2h" customClass="OWLMorphDefinitionCell">
@@ -163,6 +187,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="duN-qS-LTw" id="WvO-2u-hHM"/>
                     </connections>
@@ -175,13 +200,14 @@
         <scene sceneID="8Ie-o2-BxP">
             <objects>
                 <viewController autoresizesArchivedViewToFullSize="NO" title="EnterSearch" modalPresentationStyle="formSheet" id="4uo-KL-lD2" customClass="OWLSearchViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hDV-MX-uxi">
+                    <view key="view" contentMode="top" id="hDV-MX-uxi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter latin word here" clearsOnBeginEditing="YES" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="32x-CK-Lz6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type latin, press enter" clearsOnBeginEditing="YES" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="32x-CK-Lz6">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="0NJ-fF-ibn"/>
+                                    <constraint firstAttribute="width" constant="280" type="user" id="M97-Oc-Q6F"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
@@ -189,7 +215,7 @@
                                     <outlet property="delegate" destination="4uo-KL-lD2" id="EaV-3a-GCo"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-eJ-sdQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-eJ-sdQ">
                                 <color key="backgroundColor" red="0.48235294220000002" green="0.73725491759999995" blue="0.96470588450000005" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="IU6-jC-l8t"/>
@@ -207,8 +233,8 @@
                                     <action selector="search:" destination="4uo-KL-lD2" eventType="touchUpInside" id="lyp-Dx-pvx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gmj-cV-7He">
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gmj-cV-7He">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="Mrz-dG-6sR"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="Wgd-fS-kvg"/>
@@ -216,7 +242,6 @@
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -226,11 +251,10 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="9qx-eJ-sdQ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="EM5-eS-335"/>
                             <constraint firstAttribute="bottom" secondItem="Gmj-cV-7He" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="KSz-5C-8Ev"/>
-                            <constraint firstAttribute="trailing" secondItem="32x-CK-Lz6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Uhl-2d-iIK"/>
                             <constraint firstItem="32x-CK-Lz6" firstAttribute="leading" secondItem="hDV-MX-uxi" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eYL-Dd-wDN"/>
                             <constraint firstAttribute="trailing" secondItem="Gmj-cV-7He" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ld6-jf-wet"/>
                             <constraint firstItem="32x-CK-Lz6" firstAttribute="top" secondItem="hDV-MX-uxi" secondAttribute="top" constant="20" symbolic="YES" type="default" id="qwQ-4z-Gjg"/>
@@ -278,7 +302,8 @@
         <class className="OWLDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLDetailViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="OWLLemmaTableCell" superclassName="UITableViewCell">
@@ -315,4 +340,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="FkZ-ia-1sF"/>
+    </inferredMetricsTieBreakers>
 </document>

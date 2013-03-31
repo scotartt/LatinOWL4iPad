@@ -147,6 +147,7 @@
 		6547F4D01706BAFD007D90AA /* LatinOWL4iPad */ = {
 			isa = PBXGroup;
 			children = (
+				6547F4E21706BAFD007D90AA /* MainStoryboard.storyboard */,
 				654B6078170721E200A6B93D /* OWLMorphDataObserver.h */,
 				654B6079170721E200A6B93D /* Reachability.h */,
 				654B607A170721E200A6B93D /* Reachability.m */,
@@ -160,7 +161,6 @@
 				654B6082170721E200A6B93D /* OWLLemmaTableCell.m */,
 				6547F4D91706BAFD007D90AA /* OWLAppDelegate.h */,
 				6547F4DA1706BAFD007D90AA /* OWLAppDelegate.m */,
-				6547F4E21706BAFD007D90AA /* MainStoryboard.storyboard */,
 				6547F4E51706BAFD007D90AA /* OWLMasterViewController.h */,
 				6547F4E61706BAFD007D90AA /* OWLMasterViewController.m */,
 				6547F4E81706BAFD007D90AA /* OWLDetailViewController.h */,

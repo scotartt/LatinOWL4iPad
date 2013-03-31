@@ -8,6 +8,7 @@
 
 #import "OWLSearchViewController.h"
 
+
 @interface OWLSearchViewController ()
 
 @end
@@ -20,11 +21,13 @@
 
 
     - (IBAction)search:(id)sender {
+        [self.searchText resignFirstResponder];
         [delegate doSearch:[searchText text]];
     }
 
 
     - (IBAction)cancel:(id)sender {
+        [self.searchText resignFirstResponder];
         [delegate dismissSearch:[searchText text]];
     }
 
@@ -35,6 +38,13 @@
             // Custom initialization
         }
         return self;
+    }
+
+
+    - (void)viewDidAppear:(BOOL)animated {
+        self.modalInPopover = YES;
+        [self.searchText becomeFirstResponder];
+        [super viewDidAppear:animated];
     }
 
 

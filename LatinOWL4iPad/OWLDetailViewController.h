@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OWLDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) id detailItem;
+@interface OWLDetailViewController : UIViewController <UISplitViewControllerDelegate, UIWebViewDelegate, NSURLConnectionDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+    @property(strong, nonatomic) id detailItem;
+    @property(strong, nonatomic) IBOutlet UIWebView *webView;
+    @property(strong, nonatomic) NSString *theURL;
+    @property(strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end

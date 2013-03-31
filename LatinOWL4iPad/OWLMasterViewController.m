@@ -77,13 +77,23 @@
             searchPopover = [popoverSegue popoverController];
             OWLSearchViewController *searchController = (OWLSearchViewController *) [segue destinationViewController];
             [searchController setDelegate:self];
-        } else if ([segue.identifier isEqualToString:@"no"]) {
+        } else if ([segue.identifier isEqualToString:@"dictionaryView"]) {
+            self.detailViewController = [segue destinationViewController];
+            NSLog(@"changing to view:%@", self.detailViewController);
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            int section = [indexPath section];
+            NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
+            [self.detailViewController setTitle:lemmaId];
+            NSLog(@"Selected lemma:%@", lemmaId);
+            NSString *url = [self.latinMorphData theLewisAndShortURL:lemmaId];
+            NSLog(@"Dictionary URL:%@", url);
+            [self.detailViewController setTheURL:url];
         }
     }
 
 
     - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-
+        NSLog(@"should do segue? %@", identifier);
         if ([identifier isEqualToString:@"searchFormSegue"]) {
             if (searchPopover) {
                 // already showing.
