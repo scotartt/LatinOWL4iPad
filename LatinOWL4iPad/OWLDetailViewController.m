@@ -7,6 +7,7 @@
 //
 
 #import "OWLDetailViewController.h"
+#import "OWLButtonFactory.h"
 
 
 @interface OWLDetailViewController ()
@@ -20,7 +21,6 @@
 
 @implementation OWLDetailViewController
 
-    @synthesize theURL;
     @synthesize activityIndicator;
     @synthesize webView;
 
@@ -29,11 +29,10 @@
     - (void)setDetailItem:(id)newDetailItem {
         if (_detailItem != newDetailItem) {
             _detailItem = newDetailItem;
-
+            [self.webView setHidden:YES];
             // Update the view.
             [self configureView];
         }
-
         if (self.masterPopoverController != nil) {
             [self.masterPopoverController dismissPopoverAnimated:YES];
         }
@@ -41,7 +40,12 @@
 
 
     - (void)configureView {
-        [self.activityIndicator stopAnimating];
+        [[self navigationItem] setTitle:self.title];
+        NSURL *url = [NSURL URLWithString:(NSString *) _detailItem];
+        NSLog(@"Getting url:%@", url);
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:request];
+        [self.webView setDelegate:self];
     }
 
 
@@ -51,19 +55,57 @@
 
     - (void)viewDidLoad {
         [super viewDidLoad];
-        NSURL *aURL = [NSURL URLWithString:theURL];
-        NSLog(@"Getting url:%@", aURL);
-        NSURLRequest *request = [NSURLRequest requestWithURL:aURL];
-        [self.webView loadRequest:request];
-        [self.webView setDelegate:self];
         [self configureView];
     }
 
 
     - (void)viewWillAppear:(BOOL)animated {
         [super viewWillAppear:animated];
-        [[self navigationItem] setTitle:self.title];
-        // [self.navigationController setNavigationBarHidden:NO animated:animated];
+
+        OWLButtonFactory *buttonFactory = [OWLButtonFactory initButtonsForTarget:self];
+        UIBarButtonItem *backButton = [buttonFactory createCustomNavButtonWithIcon:@"09-arrow-west.png" andSelectorAction:@selector(goBack:) width:19 height:16];
+        UIBarButtonItem *fwdButton = [buttonFactory createCustomNavButtonWithIcon:@"02-arrow-east.png" andSelectorAction:@selector(goFwd:) width:19 height:16];
+        UIBarButtonItem *stopButton = [buttonFactory createCustomNavButtonWithIcon:@"60-x.png" andSelectorAction:nil width:14 height:14];
+        UIBarButtonItem *reloadButton = [buttonFactory createCustomNavButtonWithIcon:@"01-refresh.png" andSelectorAction:@selector(goReload:) width:24 height:26];
+        NSArray *rightButtons = [NSArray arrayWithObjects: stopButton, fwdButton, backButton, nil];
+        self.navigationItem.rightBarButtonItems = rightButtons;
+        NSArray *leftButtons = [NSArray arrayWithObjects:reloadButton, nil];
+        self.navigationItem.leftBarButtonItems = leftButtons;
+    }
+
+
+    - (void)goReload:(id)sender {
+        if (_detailItem) {
+            [self configureView];
+        } else {
+            if ([self.webView isHidden]) {
+                [self.webView setHidden:NO];
+            }
+            [self.webView reload];
+        }
+    }
+
+
+    - (void)goStop:(id)sender {
+        if ([self.webView isHidden]) {
+            [self.webView setHidden:NO];
+        }
+        [self.webView stopLoading];
+        [self.activityIndicator stopAnimating];
+    }
+
+
+    - (void)goFwd:(id)sender {
+        if (_detailItem && self.webView && [self.webView canGoForward]) {
+            [self.webView goForward];
+        }
+    }
+
+
+    - (void)goBack:(id)sender {
+        if (_detailItem && self.webView && [self.webView canGoBack]) {
+            [self.webView goBack];
+        }
     }
 
 
@@ -81,6 +123,7 @@
 
 
     - (void)webViewDidFinishLoad:(UIWebView *)webView1 {
+        [self.webView setHidden:NO];
         [self.activityIndicator stopAnimating];
     }
 

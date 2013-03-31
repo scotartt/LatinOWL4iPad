@@ -18,6 +18,6 @@
 
     @property(strong, nonatomic) OWLDetailViewController *detailViewController;
     @property(strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-    @property(nonatomic, strong) OWLMorphData *latinMorphData;
-
+    @property(strong, nonatomic) OWLMorphData *latinMorphData;
+    @property(strong, nonatomic) NSMutableArray *history;
 @end

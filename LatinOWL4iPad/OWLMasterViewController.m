@@ -12,6 +12,7 @@
 #import "OWLMorphData.h"
 #import "OWLLemmaTableCell.h"
 #import "OWLMorphDefinitionCell.h"
+#import "OWLMasterViewHistoryController.h"
 
 
 @implementation OWLMasterViewController {
@@ -22,13 +23,15 @@
         self.clearsSelectionOnViewWillAppear = NO;
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         [super awakeFromNib];
+        [self setHistory:[NSMutableArray array]];
     }
 
 
     - (void)viewDidLoad {
         [super viewDidLoad];
-        self.navigationController.toolbarHidden = NO;
+        self.navigationController.toolbarHidden = YES;
         self.detailViewController = (OWLDetailViewController *) [[self.splitViewController.viewControllers lastObject] topViewController];
+        [self performSegueWithIdentifier:@"searchFormSegue" sender:self];
     }
 
 
@@ -49,7 +52,7 @@
         [self dismissPopover:self];
     }
 
-
+#pragma mark - Search
     - (void)doSearch:(NSString *)value {
         NSLog(@"Doing the search %@", value);
         [self dismissPopover:self];
@@ -61,33 +64,26 @@
         [self.activityIndicator startAnimating];
         OWLMorphData *searchLatinMorphData = [OWLMorphData data];
         [self setLatinMorphData:searchLatinMorphData];
-        // clear the table
         [self.tableView reloadData];
         NSLog(@"User searched for '%@'", value);
         [searchLatinMorphData searchLatin:value withObserver:self];
+        [self.history addObject:value];
+        //NSLog(@"Started search for '%@', now have %d items of history.", value, [self.history count]);
     }
 
 #pragma mark - Segues
 
     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-        // we have completed the search and pressed enter.
         NSLog(@"segue %@", segue.identifier);
         if ([segue.identifier isEqualToString:@"searchFormSegue"]) {
+            // we have completed the search and pressed enter.
             UIStoryboardPopoverSegue *popoverSegue = (UIStoryboardPopoverSegue *) segue;
             searchPopover = [popoverSegue popoverController];
             OWLSearchViewController *searchController = (OWLSearchViewController *) [segue destinationViewController];
             [searchController setDelegate:self];
-        } else if ([segue.identifier isEqualToString:@"dictionaryView"]) {
-            self.detailViewController = [segue destinationViewController];
-            NSLog(@"changing to view:%@", self.detailViewController);
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            int section = [indexPath section];
-            NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
-            [self.detailViewController setTitle:lemmaId];
-            NSLog(@"Selected lemma:%@", lemmaId);
-            NSString *url = [self.latinMorphData theLewisAndShortURL:lemmaId];
-            NSLog(@"Dictionary URL:%@", url);
-            [self.detailViewController setTheURL:url];
+        } else if ([segue.identifier isEqualToString:@"historySegue"]) {
+            OWLMasterViewHistoryController *historyController = (OWLMasterViewHistoryController *) [segue destinationViewController];
+            [historyController setHistory:[self history]];
         }
     }
 
@@ -97,11 +93,11 @@
         if ([identifier isEqualToString:@"searchFormSegue"]) {
             if (searchPopover) {
                 // already showing.
-                NSLog(@"already showing");
+                NSLog(@"already showing %@, dismissing it.", [searchPopover description]);
                 [self dismissPopover:self];
                 return NO;
             } else {
-                NSLog(@"not showing");
+                NSLog(@"not showing a searchPopover, therefore ok to show.");
                 return YES;
             }
         }
@@ -118,8 +114,6 @@
 
     - (void)refreshViewData:(OWLMorphData *)latinMorph {
         if (latinMorph == [self latinMorphData]) {
-            // this is the latest instance of search...
-            // [self.aboutButton setHidden:YES];
             NSLog(@"refreshViewData called from URL %@", latinMorph.urlString);
             [self.activityIndicator stopAnimating];
             [self.tableView reloadData];
@@ -144,6 +138,17 @@
     }
 
 #pragma mark - Table View
+    - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+        NSLog(@"selected cell:%@", indexPath);
+        int section = [indexPath section];
+        NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
+        [self.detailViewController setTitle:lemmaId];
+        NSLog(@"Selected lemma:%@", lemmaId);
+        NSString *url = [self.latinMorphData theLewisAndShortURL:lemmaId];
+        NSLog(@"Dictionary URL:%@", url);
+        [self.detailViewController setDetailItem:url];
+    }
+
 
     - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
         NSLog(@"called numberOfSectionsInTableView:%@", tableView);

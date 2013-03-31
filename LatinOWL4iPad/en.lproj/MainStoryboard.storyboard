@@ -51,7 +51,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tyv-L5-KCe" firstAttribute="centerX" secondItem="GaQ-3A-V7L" secondAttribute="centerX" type="default" id="7zU-W9-eeX"/>
-                            <constraint firstItem="GaQ-3A-V7L" firstAttribute="top" secondItem="26" secondAttribute="top" type="default" id="Ga8-Uj-gtz"/>
+                            <constraint firstItem="GaQ-3A-V7L" firstAttribute="bottom" secondItem="26" secondAttribute="bottom" type="default" id="F3l-ui-Hch"/>
                             <constraint firstItem="Tyv-L5-KCe" firstAttribute="centerY" secondItem="26" secondAttribute="centerY" type="default" id="QHD-Bv-Rz9"/>
                             <constraint firstItem="GaQ-3A-V7L" firstAttribute="trailing" secondItem="26" secondAttribute="trailing" type="default" id="Ruh-Rf-6xe"/>
                             <constraint firstItem="GaQ-3A-V7L" firstAttribute="leading" secondItem="26" secondAttribute="leading" type="default" id="lti-tJ-kHX"/>
@@ -59,20 +59,8 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="2L0-J4-J1l">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="fjQ-up-Szw">
-                            <connections>
-                                <action selector="goBack" destination="GaQ-3A-V7L" id="ETP-Yz-5MD"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title=">" id="xZi-xL-Xby">
-                            <connections>
-                                <action selector="goForward" destination="GaQ-3A-V7L" id="c1O-pJ-Zin"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="2L0-J4-J1l"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Tyv-L5-KCe" id="8iz-Au-jag"/>
                         <outlet property="webView" destination="GaQ-3A-V7L" id="a5z-cs-7aT"/>
@@ -80,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1045" y="292"/>
+            <point key="canvasLocation" x="1096" y="261"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
@@ -139,7 +127,6 @@
                                 <connections>
                                     <outlet property="lemmaMeaning" destination="Lel-bU-Z0j" id="IKT-Qp-ZRG"/>
                                     <outlet property="lemmaTitle" destination="tIi-5l-S0i" id="oQG-WP-VrT"/>
-                                    <segue destination="4" kind="replace" identifier="dictionaryView" splitViewControllerTargetIndex="1" id="FkZ-ia-1sF"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MorphTableCell" textLabel="DN7-HO-fsL" detailTextLabel="Pmn-KY-60H" style="IBUITableViewCellStyleValue1" id="ySv-xw-W2h" customClass="OWLMorphDefinitionCell">
@@ -179,14 +166,21 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Results" id="40">
-                        <barButtonItem key="leftBarButtonItem" title="Search" id="FDA-hW-VZ0">
+                        <barButtonItem key="leftBarButtonItem" image="06-magnify.png" id="FDA-hW-VZ0">
+                            <color key="tintColor" red="0.48235294220000002" green="0.73725491759999995" blue="0.96470588450000005" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <segue destination="4uo-KL-lD2" kind="popover" identifier="searchFormSegue" popoverAnchorBarButtonItem="FDA-hW-VZ0" id="4Sq-Ar-KMo">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" left="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="58-bookmark.png" id="4qx-za-e7Q">
+                            <connections>
+                                <segue destination="3W0-Re-To1" kind="push" identifier="historySegue" splitViewControllerTargetIndex="0" id="SfZ-LZ-7Y1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="duN-qS-LTw" id="WvO-2u-hHM"/>
@@ -194,7 +188,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="-643"/>
+            <point key="canvasLocation" x="1327" y="-643"/>
         </scene>
         <!--Search View Controller - EnterSearch-->
         <scene sceneID="8Ie-o2-BxP">
@@ -251,7 +245,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="9qx-eJ-sdQ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="EM5-eS-335"/>
                             <constraint firstAttribute="bottom" secondItem="Gmj-cV-7He" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="KSz-5C-8Ev"/>
@@ -271,7 +265,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jd5-BY-rtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1712" y="-674"/>
+            <point key="canvasLocation" x="1788" y="-1026"/>
+        </scene>
+        <!--Master View History Controller - History-->
+        <scene sceneID="wit-3U-Bgk">
+            <objects>
+                <tableViewController title="History" id="3W0-Re-To1" customClass="OWLMasterViewHistoryController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eBN-QA-zRa">
+                        <rect key="frame" x="0.0" y="64" width="320" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="qzM-IA-hEP" style="IBUITableViewCellStyleDefault" id="Kdz-mr-gVI" customClass="OWLHistoryTableCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="777" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzM-IA-hEP">
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="historyItem" destination="qzM-IA-hEP" id="D2F-gG-oY6"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3W0-Re-To1" id="CHh-DQ-c15"/>
+                            <outlet property="delegate" destination="3W0-Re-To1" id="T3f-tv-05n"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rka-yV-z9k"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Rh-oH-GTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1885" y="-648"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="50">
@@ -292,9 +327,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="292"/>
+            <point key="canvasLocation" x="270" y="292"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="06-magnify.png" width="24" height="24"/>
+        <image name="58-bookmark.png" width="10" height="26"/>
+    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -304,6 +343,12 @@
             <relationships>
                 <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="OWLHistoryTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLHistoryTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="historyItem" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="OWLLemmaTableCell" superclassName="UITableViewCell">
@@ -318,6 +363,9 @@
             <relationships>
                 <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
             </relationships>
+        </class>
+        <class className="OWLMasterViewHistoryController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLMasterViewHistoryController.h"/>
         </class>
         <class className="OWLMorphDefinitionCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLMorphDefinitionCell.h"/>
@@ -340,7 +388,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="FkZ-ia-1sF"/>
-    </inferredMetricsTieBreakers>
 </document>

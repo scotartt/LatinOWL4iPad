@@ -14,9 +14,6 @@
 		6547F4D51706BAFD007D90AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6547F4D31706BAFD007D90AA /* InfoPlist.strings */; };
 		6547F4D71706BAFD007D90AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547F4D61706BAFD007D90AA /* main.m */; };
 		6547F4DB1706BAFD007D90AA /* OWLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547F4DA1706BAFD007D90AA /* OWLAppDelegate.m */; };
-		6547F4DD1706BAFD007D90AA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6547F4DC1706BAFD007D90AA /* Default.png */; };
-		6547F4DF1706BAFD007D90AA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6547F4DE1706BAFD007D90AA /* Default@2x.png */; };
-		6547F4E11706BAFD007D90AA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6547F4E01706BAFD007D90AA /* Default-568h@2x.png */; };
 		6547F4E41706BAFD007D90AA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6547F4E21706BAFD007D90AA /* MainStoryboard.storyboard */; };
 		6547F4E71706BAFD007D90AA /* OWLMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547F4E61706BAFD007D90AA /* OWLMasterViewController.m */; };
 		6547F4EA1706BAFD007D90AA /* OWLDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547F4E91706BAFD007D90AA /* OWLDetailViewController.m */; };
@@ -32,6 +29,31 @@
 		654B6087170721E200A6B93D /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 654B6082170721E200A6B93D /* OWLLemmaTableCell.m */; };
 		654B60891707225D00A6B93D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 654B60881707225D00A6B93D /* libxml2.dylib */; };
 		654B608B1707226700A6B93D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654B608A1707226700A6B93D /* SystemConfiguration.framework */; };
+		65A4DF6F17083360005226DD /* circle-east.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF6D17083360005226DD /* circle-east.png */; };
+		65A4DF7017083360005226DD /* circle-east@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF6E17083360005226DD /* circle-east@2x.png */; };
+		65A4DF731708337C005226DD /* circle-west.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF711708337C005226DD /* circle-west.png */; };
+		65A4DF741708337C005226DD /* circle-west@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF721708337C005226DD /* circle-west@2x.png */; };
+		65A4DF7717086560005226DD /* 58-bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF7517086560005226DD /* 58-bookmark.png */; };
+		65A4DF7817086560005226DD /* 58-bookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF7617086560005226DD /* 58-bookmark@2x.png */; };
+		65A4DF7F1708810C005226DD /* AppIcon-72px.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF7D1708810C005226DD /* AppIcon-72px.png */; };
+		65A4DF801708810C005226DD /* AppIcon-144px.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF7E1708810C005226DD /* AppIcon-144px.png */; };
+		65A4DF821708826D005226DD /* AppIcon-72px.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF811708826D005226DD /* AppIcon-72px.png */; };
+		65A4DF841708827E005226DD /* AppIcon-144px.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A4DF831708827E005226DD /* AppIcon-144px.png */; };
+		83146269C7AE1A92835F89C0 /* 37-circle-x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831460F0FB8E6CE6A9D0126C /* 37-circle-x@2x.png */; };
+		83146293DC682BB156A20392 /* 37-circle-x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831466E9B963BC9F5D9A8913 /* 37-circle-x.png */; };
+		8314634697EB442DA6A2F615 /* 02-arrow-east.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146A73941D0BB6615E5254 /* 02-arrow-east.png */; };
+		831464EE2E82340637BF31AC /* 60-x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146FC370D9D98CBDFF7764 /* 60-x@2x.png */; };
+		831464F6DE1B91A7F0D9A556 /* 60-x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831465FCBAF859D65E11007E /* 60-x.png */; };
+		831465C91720F7FEBCE70294 /* 01-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146393F13BA48A9CAF5A75 /* 01-refresh@2x.png */; };
+		83146670A9224BBBD0B41E1A /* OWLHistoryTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 831464B178436E30A5E5E93C /* OWLHistoryTableCell.m */; };
+		8314680F44934583E0E26ABD /* 06-magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146818C30819C86F3A64DC /* 06-magnify@2x.png */; };
+		8314693960F603F3CC0EE22B /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 831461FDA076CCD5DA098C1A /* 01-refresh.png */; };
+		83146A819A6AD38B377880E1 /* 02-arrow-east@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146713139B616B7BE24262 /* 02-arrow-east@2x.png */; };
+		83146AD16C7B5B220B0FBAD0 /* 06-magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146BE8B7F69F9947A67AF4 /* 06-magnify.png */; };
+		83146ADB08A608A4769943BC /* OWLMasterViewHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83146056C720F9F992B2CCFC /* OWLMasterViewHistoryController.m */; };
+		83146D2EE13A336C61593304 /* 09-arrow-west.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146CF694AB6E037CCAF123 /* 09-arrow-west.png */; };
+		83146EB648B9100AFD56D722 /* 09-arrow-west@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146FEE79F7FEC8C7D829F4 /* 09-arrow-west@2x.png */; };
+		83146FE85D95EBC7062EC072 /* OWLButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8314667CB018E208D0E558ED /* OWLButtonFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,9 +79,6 @@
 		6547F4D81706BAFD007D90AA /* LatinOWL4iPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatinOWL4iPad-Prefix.pch"; sourceTree = "<group>"; };
 		6547F4D91706BAFD007D90AA /* OWLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLAppDelegate.h; sourceTree = "<group>"; };
 		6547F4DA1706BAFD007D90AA /* OWLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLAppDelegate.m; sourceTree = "<group>"; };
-		6547F4DC1706BAFD007D90AA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		6547F4DE1706BAFD007D90AA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		6547F4E01706BAFD007D90AA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		6547F4E31706BAFD007D90AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		6547F4E51706BAFD007D90AA /* OWLMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLMasterViewController.h; sourceTree = "<group>"; };
 		6547F4E61706BAFD007D90AA /* OWLMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLMasterViewController.m; sourceTree = "<group>"; };
@@ -84,6 +103,34 @@
 		654B6082170721E200A6B93D /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
 		654B60881707225D00A6B93D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		654B608A1707226700A6B93D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		65A4DF6D17083360005226DD /* circle-east.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-east.png"; sourceTree = "<group>"; };
+		65A4DF6E17083360005226DD /* circle-east@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-east@2x.png"; sourceTree = "<group>"; };
+		65A4DF711708337C005226DD /* circle-west.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-west.png"; sourceTree = "<group>"; };
+		65A4DF721708337C005226DD /* circle-west@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-west@2x.png"; sourceTree = "<group>"; };
+		65A4DF7517086560005226DD /* 58-bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "58-bookmark.png"; sourceTree = "<group>"; };
+		65A4DF7617086560005226DD /* 58-bookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "58-bookmark@2x.png"; sourceTree = "<group>"; };
+		65A4DF7D1708810C005226DD /* AppIcon-72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-72px.png"; sourceTree = "<group>"; };
+		65A4DF7E1708810C005226DD /* AppIcon-144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-144px.png"; sourceTree = "<group>"; };
+		65A4DF811708826D005226DD /* AppIcon-72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-72px.png"; sourceTree = "<group>"; };
+		65A4DF831708827E005226DD /* AppIcon-144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-144px.png"; sourceTree = "<group>"; };
+		83146056C720F9F992B2CCFC /* OWLMasterViewHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMasterViewHistoryController.m; sourceTree = "<group>"; };
+		831460F0FB8E6CE6A9D0126C /* 37-circle-x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-x@2x.png"; sourceTree = "<group>"; };
+		83146196B09786CA6EB69A31 /* OWLHistoryTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLHistoryTableCell.h; sourceTree = "<group>"; };
+		831461FDA076CCD5DA098C1A /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
+		83146393F13BA48A9CAF5A75 /* 01-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh@2x.png"; sourceTree = "<group>"; };
+		831464B178436E30A5E5E93C /* OWLHistoryTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLHistoryTableCell.m; sourceTree = "<group>"; };
+		831464CA2101DDA797F53B3A /* OWLMasterViewHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMasterViewHistoryController.h; sourceTree = "<group>"; };
+		831465FCBAF859D65E11007E /* 60-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-x.png"; sourceTree = "<group>"; };
+		8314667CB018E208D0E558ED /* OWLButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLButtonFactory.m; sourceTree = "<group>"; };
+		831466E9B963BC9F5D9A8913 /* 37-circle-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-x.png"; sourceTree = "<group>"; };
+		83146713139B616B7BE24262 /* 02-arrow-east@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-arrow-east@2x.png"; sourceTree = "<group>"; };
+		83146818C30819C86F3A64DC /* 06-magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-magnify@2x.png"; sourceTree = "<group>"; };
+		83146885651157583DC758F4 /* OWLButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLButtonFactory.h; sourceTree = "<group>"; };
+		83146A73941D0BB6615E5254 /* 02-arrow-east.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-arrow-east.png"; sourceTree = "<group>"; };
+		83146BE8B7F69F9947A67AF4 /* 06-magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-magnify.png"; sourceTree = "<group>"; };
+		83146CF694AB6E037CCAF123 /* 09-arrow-west.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-arrow-west.png"; sourceTree = "<group>"; };
+		83146FC370D9D98CBDFF7764 /* 60-x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-x@2x.png"; sourceTree = "<group>"; };
+		83146FEE79F7FEC8C7D829F4 /* 09-arrow-west@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-arrow-west@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +162,8 @@
 		6547F4BE1706BAFD007D90AA = {
 			isa = PBXGroup;
 			children = (
+				65A4DF831708827E005226DD /* AppIcon-144px.png */,
+				65A4DF811708826D005226DD /* AppIcon-72px.png */,
 				654B608A1707226700A6B93D /* SystemConfiguration.framework */,
 				654B60881707225D00A6B93D /* libxml2.dylib */,
 				6547F4D01706BAFD007D90AA /* LatinOWL4iPad */,
@@ -168,6 +217,12 @@
 				6547F4D11706BAFD007D90AA /* Supporting Files */,
 				6517A2651706D68C002E7097 /* OWLSearchViewController.h */,
 				6517A2661706D68C002E7097 /* OWLSearchViewController.m */,
+				8314667CB018E208D0E558ED /* OWLButtonFactory.m */,
+				83146885651157583DC758F4 /* OWLButtonFactory.h */,
+				83146056C720F9F992B2CCFC /* OWLMasterViewHistoryController.m */,
+				831464CA2101DDA797F53B3A /* OWLMasterViewHistoryController.h */,
+				831464B178436E30A5E5E93C /* OWLHistoryTableCell.m */,
+				83146196B09786CA6EB69A31 /* OWLHistoryTableCell.h */,
 			);
 			path = LatinOWL4iPad;
 			sourceTree = "<group>";
@@ -175,13 +230,30 @@
 		6547F4D11706BAFD007D90AA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65A4DF7D1708810C005226DD /* AppIcon-72px.png */,
+				65A4DF7E1708810C005226DD /* AppIcon-144px.png */,
+				65A4DF7517086560005226DD /* 58-bookmark.png */,
+				65A4DF7617086560005226DD /* 58-bookmark@2x.png */,
+				65A4DF711708337C005226DD /* circle-west.png */,
+				65A4DF721708337C005226DD /* circle-west@2x.png */,
+				65A4DF6D17083360005226DD /* circle-east.png */,
+				65A4DF6E17083360005226DD /* circle-east@2x.png */,
 				6547F4D21706BAFD007D90AA /* LatinOWL4iPad-Info.plist */,
 				6547F4D31706BAFD007D90AA /* InfoPlist.strings */,
 				6547F4D61706BAFD007D90AA /* main.m */,
 				6547F4D81706BAFD007D90AA /* LatinOWL4iPad-Prefix.pch */,
-				6547F4DC1706BAFD007D90AA /* Default.png */,
-				6547F4DE1706BAFD007D90AA /* Default@2x.png */,
-				6547F4E01706BAFD007D90AA /* Default-568h@2x.png */,
+				831460F0FB8E6CE6A9D0126C /* 37-circle-x@2x.png */,
+				831466E9B963BC9F5D9A8913 /* 37-circle-x.png */,
+				83146818C30819C86F3A64DC /* 06-magnify@2x.png */,
+				83146BE8B7F69F9947A67AF4 /* 06-magnify.png */,
+				831461FDA076CCD5DA098C1A /* 01-refresh.png */,
+				83146393F13BA48A9CAF5A75 /* 01-refresh@2x.png */,
+				83146713139B616B7BE24262 /* 02-arrow-east@2x.png */,
+				83146FEE79F7FEC8C7D829F4 /* 09-arrow-west@2x.png */,
+				83146CF694AB6E037CCAF123 /* 09-arrow-west.png */,
+				83146A73941D0BB6615E5254 /* 02-arrow-east.png */,
+				83146FC370D9D98CBDFF7764 /* 60-x@2x.png */,
+				831465FCBAF859D65E11007E /* 60-x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -278,10 +350,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				6547F4D51706BAFD007D90AA /* InfoPlist.strings in Resources */,
-				6547F4DD1706BAFD007D90AA /* Default.png in Resources */,
-				6547F4DF1706BAFD007D90AA /* Default@2x.png in Resources */,
-				6547F4E11706BAFD007D90AA /* Default-568h@2x.png in Resources */,
 				6547F4E41706BAFD007D90AA /* MainStoryboard.storyboard in Resources */,
+				65A4DF6F17083360005226DD /* circle-east.png in Resources */,
+				65A4DF7017083360005226DD /* circle-east@2x.png in Resources */,
+				65A4DF731708337C005226DD /* circle-west.png in Resources */,
+				65A4DF741708337C005226DD /* circle-west@2x.png in Resources */,
+				83146269C7AE1A92835F89C0 /* 37-circle-x@2x.png in Resources */,
+				83146293DC682BB156A20392 /* 37-circle-x.png in Resources */,
+				8314680F44934583E0E26ABD /* 06-magnify@2x.png in Resources */,
+				83146AD16C7B5B220B0FBAD0 /* 06-magnify.png in Resources */,
+				8314693960F603F3CC0EE22B /* 01-refresh.png in Resources */,
+				831465C91720F7FEBCE70294 /* 01-refresh@2x.png in Resources */,
+				83146A819A6AD38B377880E1 /* 02-arrow-east@2x.png in Resources */,
+				83146EB648B9100AFD56D722 /* 09-arrow-west@2x.png in Resources */,
+				83146D2EE13A336C61593304 /* 09-arrow-west.png in Resources */,
+				8314634697EB442DA6A2F615 /* 02-arrow-east.png in Resources */,
+				831464EE2E82340637BF31AC /* 60-x@2x.png in Resources */,
+				831464F6DE1B91A7F0D9A556 /* 60-x.png in Resources */,
+				65A4DF7717086560005226DD /* 58-bookmark.png in Resources */,
+				65A4DF7817086560005226DD /* 58-bookmark@2x.png in Resources */,
+				65A4DF7F1708810C005226DD /* AppIcon-72px.png in Resources */,
+				65A4DF801708810C005226DD /* AppIcon-144px.png in Resources */,
+				65A4DF821708826D005226DD /* AppIcon-72px.png in Resources */,
+				65A4DF841708827E005226DD /* AppIcon-144px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +417,9 @@
 				654B6085170721E200A6B93D /* XPathResultNode.m in Sources */,
 				654B6086170721E200A6B93D /* OWLMorphDefinitionCell.m in Sources */,
 				654B6087170721E200A6B93D /* OWLLemmaTableCell.m in Sources */,
+				83146FE85D95EBC7062EC072 /* OWLButtonFactory.m in Sources */,
+				83146ADB08A608A4769943BC /* OWLMasterViewHistoryController.m in Sources */,
+				83146670A9224BBBD0B41E1A /* OWLHistoryTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
