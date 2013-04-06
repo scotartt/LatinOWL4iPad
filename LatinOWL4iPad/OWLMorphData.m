@@ -43,9 +43,7 @@
         self.urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", HOPPER_BASE, latinSearchTerm];
         NSLog(@"url = %@", self.urlString);
         NSURL *aUrl = [NSURL URLWithString:self.urlString];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl];
-        request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-        request.HTTPShouldHandleCookies = NO;
+        NSURLRequest *request = [NSURLRequest requestWithURL:aUrl cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
         @autoreleasepool {
             urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         }
@@ -100,7 +98,7 @@
         NSArray *table = [[[self definitions] objectForKey:lemmaId] objectForKey:KEY_TABLE];
         @try {
             XPathResultNode *node = [table objectAtIndex:index];
-            NSLog(@"table = %@", node);
+            NSLog(@"table=%@", node);
             XPathResultNode *td0 = [[node childNodes] objectAtIndex:0];
             return [td0 contentString];
         } @catch (id theException) {
@@ -114,7 +112,7 @@
         NSArray *table = [[[self definitions] objectForKey:lemmaId] objectForKey:KEY_TABLE];
         @try {
             XPathResultNode *node = [table objectAtIndex:index];
-            NSLog(@"table = %@", node);
+            NSLog(@"table=%@", node);
             XPathResultNode *td1 = [[node childNodes] objectAtIndex:1];
             return [td1 contentString];
         } @catch (id theException) {
@@ -136,13 +134,13 @@
 
 
     - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-        NSLog(@"connection:%@ didReceiveResponse:%@ is called", connection, response);
+        NSLog(@"connection:%@ didReceiveResponse:(with suggested filename:%@) is called", connection, response.suggestedFilename);
         [self.responseData setLength:0];
     }
 
 
     - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-        NSLog(@"connection:%@ didReceiveData:%@ is called", connection, data);
+        NSLog(@"connection:%@ didReceiveData:(of length:%d) is called", connection, data.length);
         [self.responseData appendData:data];
     }
 
@@ -154,12 +152,16 @@
 
     - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
         NSLog(@"connectionDidFininishLoading:%@ is called", connection);
-        NSString *content = [[NSString alloc] initWithBytes:[self.responseData bytes]
-                                                     length:[self.responseData length]
-                                                   encoding:NSUTF8StringEncoding];
-        NSLog(@"Data = %@", content);
         [self populateLemmaData:self.responseData];
         [self.observer refreshViewData:self];
+    }
+
+
+    - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) [cachedResponse response];
+        NSDictionary *headers = [httpResponse allHeaderFields];
+        NSLog(@"Will cache this response with storage policy: %d with headers:%@", cachedResponse.storagePolicy, headers);
+        return cachedResponse;
     }
 
 #pragma mark the population methods that parse the HTML for the necessary data.

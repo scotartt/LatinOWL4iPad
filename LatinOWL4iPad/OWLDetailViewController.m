@@ -19,7 +19,9 @@
 @end
 
 
-@implementation OWLDetailViewController
+@implementation OWLDetailViewController {
+        NSURLRequest *request;
+    }
 
     @synthesize activityIndicator;
     @synthesize webView;
@@ -29,7 +31,6 @@
     - (void)setDetailItem:(id)newDetailItem {
         if (_detailItem != newDetailItem) {
             _detailItem = newDetailItem;
-            [self.webView setHidden:YES];
             // Update the view.
             [self configureView];
         }
@@ -44,9 +45,7 @@
         if (_detailItem) {
             NSURL *url = [NSURL URLWithString:(NSString *) _detailItem];
             NSLog(@"Getting url:%@", url);
-            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-            request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-            request.HTTPShouldHandleCookies = NO;
+            request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
             [self.webView loadRequest:request];
             [self.webView setDelegate:self];
         }
@@ -115,6 +114,7 @@
 
     - (void)didReceiveMemoryWarning {
         [super didReceiveMemoryWarning];
+        _detailItem = nil;
         // Dispose of any resources that can be recreated.
     }
 
