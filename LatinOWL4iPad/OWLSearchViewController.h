@@ -28,4 +28,8 @@
     - (void)dismissSearch:(NSString *)value;
 
     - (void)doSearch:(NSString *)value;
+
+    - (NSString *)lastSearch;
+
+    - (BOOL)useLastSearch;
 @end

@@ -50,7 +50,7 @@
 		8314693960F603F3CC0EE22B /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 831461FDA076CCD5DA098C1A /* 01-refresh.png */; };
 		83146A819A6AD38B377880E1 /* 02-arrow-east@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146713139B616B7BE24262 /* 02-arrow-east@2x.png */; };
 		83146AD16C7B5B220B0FBAD0 /* 06-magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146BE8B7F69F9947A67AF4 /* 06-magnify.png */; };
-		83146ADB08A608A4769943BC /* OWLMasterViewHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83146056C720F9F992B2CCFC /* OWLMasterViewHistoryController.m */; };
+		83146ADB08A608A4769943BC /* OWLHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83146056C720F9F992B2CCFC /* OWLHistoryViewController.m */; };
 		83146D2EE13A336C61593304 /* 09-arrow-west.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146CF694AB6E037CCAF123 /* 09-arrow-west.png */; };
 		83146EB648B9100AFD56D722 /* 09-arrow-west@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83146FEE79F7FEC8C7D829F4 /* 09-arrow-west@2x.png */; };
 		83146FE85D95EBC7062EC072 /* OWLButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8314667CB018E208D0E558ED /* OWLButtonFactory.m */; };
@@ -113,13 +113,13 @@
 		65A4DF7E1708810C005226DD /* AppIcon-144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-144px.png"; sourceTree = "<group>"; };
 		65A4DF811708826D005226DD /* AppIcon-72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-72px.png"; sourceTree = "<group>"; };
 		65A4DF831708827E005226DD /* AppIcon-144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-144px.png"; sourceTree = "<group>"; };
-		83146056C720F9F992B2CCFC /* OWLMasterViewHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMasterViewHistoryController.m; sourceTree = "<group>"; };
+		83146056C720F9F992B2CCFC /* OWLHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLHistoryViewController.m; sourceTree = "<group>"; };
 		831460F0FB8E6CE6A9D0126C /* 37-circle-x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-x@2x.png"; sourceTree = "<group>"; };
 		83146196B09786CA6EB69A31 /* OWLHistoryTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLHistoryTableCell.h; sourceTree = "<group>"; };
 		831461FDA076CCD5DA098C1A /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
 		83146393F13BA48A9CAF5A75 /* 01-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh@2x.png"; sourceTree = "<group>"; };
 		831464B178436E30A5E5E93C /* OWLHistoryTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLHistoryTableCell.m; sourceTree = "<group>"; };
-		831464CA2101DDA797F53B3A /* OWLMasterViewHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMasterViewHistoryController.h; sourceTree = "<group>"; };
+		831464CA2101DDA797F53B3A /* OWLHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLHistoryViewController.h; sourceTree = "<group>"; };
 		831465FCBAF859D65E11007E /* 60-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-x.png"; sourceTree = "<group>"; };
 		8314667CB018E208D0E558ED /* OWLButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLButtonFactory.m; sourceTree = "<group>"; };
 		831466E9B963BC9F5D9A8913 /* 37-circle-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-x.png"; sourceTree = "<group>"; };
@@ -219,8 +219,8 @@
 				6517A2661706D68C002E7097 /* OWLSearchViewController.m */,
 				8314667CB018E208D0E558ED /* OWLButtonFactory.m */,
 				83146885651157583DC758F4 /* OWLButtonFactory.h */,
-				83146056C720F9F992B2CCFC /* OWLMasterViewHistoryController.m */,
-				831464CA2101DDA797F53B3A /* OWLMasterViewHistoryController.h */,
+				83146056C720F9F992B2CCFC /* OWLHistoryViewController.m */,
+				831464CA2101DDA797F53B3A /* OWLHistoryViewController.h */,
 				831464B178436E30A5E5E93C /* OWLHistoryTableCell.m */,
 				83146196B09786CA6EB69A31 /* OWLHistoryTableCell.h */,
 			);
@@ -418,7 +418,7 @@
 				654B6086170721E200A6B93D /* OWLMorphDefinitionCell.m in Sources */,
 				654B6087170721E200A6B93D /* OWLLemmaTableCell.m in Sources */,
 				83146FE85D95EBC7062EC072 /* OWLButtonFactory.m in Sources */,
-				83146ADB08A608A4769943BC /* OWLMasterViewHistoryController.m in Sources */,
+				83146ADB08A608A4769943BC /* OWLHistoryViewController.m in Sources */,
 				83146670A9224BBBD0B41E1A /* OWLHistoryTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

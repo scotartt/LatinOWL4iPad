@@ -12,12 +12,14 @@
 #import "OWLMorphData.h"
 #import "OWLLemmaTableCell.h"
 #import "OWLMorphDefinitionCell.h"
-#import "OWLMasterViewHistoryController.h"
 
 
 @implementation OWLMasterViewController {
         __weak UIPopoverController *searchPopover;
     }
+    @synthesize lastSearch;
+    @synthesize useLastSearch;
+
 
     - (void)awakeFromNib {
         self.clearsSelectionOnViewWillAppear = NO;
@@ -38,10 +40,10 @@
     - (void)didReceiveMemoryWarning {
         [super didReceiveMemoryWarning];
         // Dispose of any resources that can be recreated.
-    }
-
-
-    - (void)insertNewObject:(id)sender {
+        [self setHistory:[NSMutableArray array]];
+        [self setLastSearch:nil];
+        [self setLatinMorphData:nil];
+        [self setUseLastSearch:NO];
     }
 
 
@@ -55,8 +57,23 @@
 #pragma mark - Search
     - (void)doSearch:(NSString *)value {
         NSLog(@"Doing the search %@", value);
+        //once submitted, don't redisplay unless error.
+        self.useLastSearch = NO;
+        self.lastSearch = value;
         [self dismissPopover:self];
         [self handleSearch:value];
+        // only add to the history when from popover
+        [self.history addObject:value];
+    }
+
+
+    - (void)doSearchFromHistory:(NSString *)value {
+        NSLog(@"Doing the search %@", value);
+        //after history, we want the value to repopulate the dialog.
+        self.useLastSearch = YES;
+        self.lastSearch = value;
+        [self handleSearch:value];
+        // don't add the value to the history as we got it from the history.
     }
 
 
@@ -67,8 +84,6 @@
         [self.tableView reloadData];
         NSLog(@"User searched for '%@'", value);
         [searchLatinMorphData searchLatin:value withObserver:self];
-        [self.history addObject:value];
-        //NSLog(@"Started search for '%@', now have %d items of history.", value, [self.history count]);
     }
 
 #pragma mark - Segues
@@ -82,7 +97,8 @@
             OWLSearchViewController *searchController = (OWLSearchViewController *) [segue destinationViewController];
             [searchController setDelegate:self];
         } else if ([segue.identifier isEqualToString:@"historySegue"]) {
-            OWLMasterViewHistoryController *historyController = (OWLMasterViewHistoryController *) [segue destinationViewController];
+            OWLHistoryViewController *historyController = (OWLHistoryViewController *) [segue destinationViewController];
+            [historyController setDelegate:self];
             [historyController setHistory:[self history]];
         }
     }
@@ -94,6 +110,7 @@
             if (searchPopover) {
                 // already showing.
                 NSLog(@"already showing %@, dismissing it.", [searchPopover description]);
+                self.useLastSearch = YES;
                 [self dismissPopover:self];
                 return NO;
             } else {
@@ -121,22 +138,39 @@
     }
 
 
-    - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection {
+    - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection fromData:(OWLMorphData *)morphData {
         NSLog(@"Connection Error = %@", error);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error"
-                                                        message:error.localizedDescription
-                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        if ([self isLoadedAndVisible]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error"
+                                                            message:error.localizedDescription
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
     }
 
 
-    - (void)showError:(NSException *)exception forSearchTerm:(NSString *)searchTerm {
-        NSLog(@"For search term=%@ - got error = %@", searchTerm, [exception description]);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(NSString *) [exception.userInfo objectForKey:@"title"]
-                                                        message:(NSString *) [exception.userInfo objectForKey:@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+    - (void)showError:(NSException *)exception forSearchURL:(NSString *)searchURL fromData:(OWLMorphData *)morphData {
+        NSLog(@"For search url=%@ - got error = %@", searchURL, [exception description]);
+        [self.history removeObject:morphData.searchTerm];
+        NSLog(@"removed '%@' from history; history count is now: %d with %@", searchURL, [self.history count], self.history);
+
+        if ([self isLoadedAndVisible]) {
+            NSLog(@"view is not hidden, showing alert and search form");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(NSString *) [exception.userInfo objectForKey:@"title"]
+                                                            message:(NSString *) [exception.userInfo objectForKey:@"message"]
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            self.useLastSearch = YES;
+            [self performSegueWithIdentifier:@"searchFormSegue" sender:self];
+        } else {
+            NSLog(@"view is hidden, cannot showing alert and search form");
+        }
     }
 
+
+    - (BOOL)isLoadedAndVisible {
+        return self.isViewLoaded && self.view.window;
+    }
 #pragma mark - Table View
     - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         NSLog(@"selected cell:%@", indexPath);

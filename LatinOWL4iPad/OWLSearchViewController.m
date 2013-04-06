@@ -42,9 +42,21 @@
 
 
     - (void)viewDidAppear:(BOOL)animated {
-        self.modalInPopover = YES;
+        NSLog(@"View did appear animated:%i useLastSearch:%i text:%@", animated, self.delegate.useLastSearch, self.delegate.lastSearch);
         [self.searchText becomeFirstResponder];
+        if ([self.delegate useLastSearch] == YES) {
+            NSString *text = self.delegate.lastSearch;
+            self.searchText.placeholder = nil;
+            self.searchText.text = text;
+        }
         [super viewDidAppear:animated];
+    }
+
+
+    - (void)viewWillAppear:(BOOL)animated {
+        self.modalInPopover = YES;
+
+        [super viewWillAppear:animated];
     }
 
 

@@ -11,12 +11,14 @@
 #import "XPathResultNode.h"
 
 
-@implementation OWLMorphData
+@implementation OWLMorphData {
+        NSURLConnection *urlConnection;
+        NSURL *theURL;
+    }
+    @synthesize searchTerm;
     @synthesize responseData;
-    @synthesize urlConnection;
     @synthesize definitions;
     @synthesize observer;
-    @synthesize theURL;
     @synthesize urlString;
     @synthesize lemmas;
 
@@ -30,18 +32,23 @@
         self.definitions = [[NSMutableDictionary alloc] init];
         self.responseData = [NSMutableData data];
         self.lemmas = [NSMutableArray array];
-        self.urlConnection = nil;
+        urlConnection = nil;
         return self;
     }
 
 
     - (void)searchLatin:(NSString *)latinSearchTerm withObserver:(id <OWLMorphDataObserver>)morphObserver {
+        self.searchTerm = latinSearchTerm;
         self.observer = morphObserver;
         self.urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", HOPPER_BASE, latinSearchTerm];
         NSLog(@"url = %@", self.urlString);
         NSURL *aUrl = [NSURL URLWithString:self.urlString];
-        NSURLRequest *request = [NSURLRequest requestWithURL:aUrl];
-        self.urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl];
+        request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+        request.HTTPShouldHandleCookies = NO;
+        @autoreleasepool {
+            urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        }
     }
 
 #pragma accessor methods for data once parsed
@@ -122,7 +129,7 @@
     - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
         NSLog(@"connection:%@ WillSendRequest:%@ redirecResponse:%@ is called", connection, request.URL.absoluteString, response);
         @autoreleasepool {
-            self.theURL = [request URL];
+            theURL = [request URL];
         }
         return request;
     }
@@ -141,7 +148,7 @@
 
 
     - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-        [self.observer showError:error forConnection:connection];
+        [self.observer showError:error forConnection:connection fromData:self];
     }
 
 
@@ -176,8 +183,7 @@
                          forKey:@"message"];
             NSException *exception = [NSException exceptionWithName:@"NoLemmataPresent" reason:reasonStr userInfo:userInfo];
             if (self.observer != nil) {
-                [self.observer showError:exception
-                           forSearchTerm:self.urlString];
+                [self.observer showError:exception forSearchURL:self.urlString fromData:self];
             } else {
                 @throw exception;
             }

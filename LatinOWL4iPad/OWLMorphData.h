@@ -22,12 +22,11 @@ static NSString *const KEY_LEXICON = @"lexicon";
 @interface OWLMorphData : NSObject <NSURLConnectionDelegate>
 
     @property(nonatomic, weak) id <OWLMorphDataObserver> observer;
-    @property(nonatomic, strong) NSURL *theURL;
     @property(nonatomic, strong) NSString *urlString;
     @property(nonatomic, strong) NSMutableData *responseData;
-    @property(nonatomic, strong) NSURLConnection *urlConnection;
     @property(nonatomic, strong) NSMutableDictionary *definitions;
     @property(nonatomic, strong) NSArray *lemmas;
+    @property(nonatomic, strong) NSString *searchTerm;
 
     - (void)searchLatin:(NSString *)latinSearchTerm withObserver:(id <OWLMorphDataObserver>)morphObserver;
 

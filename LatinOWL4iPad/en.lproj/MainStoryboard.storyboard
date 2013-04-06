@@ -270,7 +270,7 @@
         <!--Master View History Controller - History-->
         <scene sceneID="wit-3U-Bgk">
             <objects>
-                <tableViewController title="History" id="3W0-Re-To1" customClass="OWLMasterViewHistoryController" sceneMemberID="viewController">
+                <tableViewController title="History" id="3W0-Re-To1" customClass="OWLHistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eBN-QA-zRa">
                         <rect key="frame" x="0.0" y="64" width="320" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

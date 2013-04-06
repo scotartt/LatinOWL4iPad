@@ -41,11 +41,15 @@
 
     - (void)configureView {
         [[self navigationItem] setTitle:self.title];
-        NSURL *url = [NSURL URLWithString:(NSString *) _detailItem];
-        NSLog(@"Getting url:%@", url);
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        [self.webView loadRequest:request];
-        [self.webView setDelegate:self];
+        if (_detailItem) {
+            NSURL *url = [NSURL URLWithString:(NSString *) _detailItem];
+            NSLog(@"Getting url:%@", url);
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+            request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+            request.HTTPShouldHandleCookies = NO;
+            [self.webView loadRequest:request];
+            [self.webView setDelegate:self];
+        }
     }
 
 
@@ -67,7 +71,7 @@
         UIBarButtonItem *fwdButton = [buttonFactory createCustomNavButtonWithIcon:@"02-arrow-east.png" andSelectorAction:@selector(goFwd:) width:19 height:16];
         UIBarButtonItem *stopButton = [buttonFactory createCustomNavButtonWithIcon:@"60-x.png" andSelectorAction:nil width:14 height:14];
         UIBarButtonItem *reloadButton = [buttonFactory createCustomNavButtonWithIcon:@"01-refresh.png" andSelectorAction:@selector(goReload:) width:24 height:26];
-        NSArray *rightButtons = [NSArray arrayWithObjects: stopButton, fwdButton, backButton, nil];
+        NSArray *rightButtons = [NSArray arrayWithObjects:stopButton, fwdButton, backButton, nil];
         self.navigationItem.rightBarButtonItems = rightButtons;
         NSArray *leftButtons = [NSArray arrayWithObjects:reloadButton, nil];
         self.navigationItem.leftBarButtonItems = leftButtons;
@@ -132,6 +136,7 @@
         [self.activityIndicator stopAnimating];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Web view error" message:[error description]
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 
 

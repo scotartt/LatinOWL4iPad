@@ -9,9 +9,9 @@
 
 @protocol OWLMorphDataObserver <NSObject>
 @required
-    - (void)refreshViewData:(OWLMorphData *)latinMorph;
+    - (void)refreshViewData:(OWLMorphData *)morphData;
 
-    - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection;
+    - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection fromData:(OWLMorphData *)morphData;
 
-    - (void)showError:(NSException *)exception forSearchTerm:(NSString *)searchTerm;
+    - (void)showError:(NSException *)exception forSearchURL:(NSString *)searchTerm fromData:(OWLMorphData *)morphData;
 @end
