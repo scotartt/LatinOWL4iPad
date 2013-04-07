@@ -41,7 +41,6 @@
 
 
     - (void)configureView {
-        [[self navigationItem] setTitle:self.title];
         if (_detailItem) {
             NSURL *url = [NSURL URLWithString:(NSString *) _detailItem];
             NSLog(@"Getting url:%@", url);
@@ -58,13 +57,13 @@
 
     - (void)viewDidLoad {
         [super viewDidLoad];
+        [[self navigationItem] setTitle:self.title];
         [self configureView];
     }
 
 
     - (void)viewWillAppear:(BOOL)animated {
         [super viewWillAppear:animated];
-
         OWLButtonFactory *buttonFactory = [OWLButtonFactory initButtonsForTarget:self];
         UIBarButtonItem *backButton = [buttonFactory createCustomNavButtonWithIcon:@"09-arrow-west.png" andSelectorAction:@selector(goBack:) width:19 height:16];
         UIBarButtonItem *fwdButton = [buttonFactory createCustomNavButtonWithIcon:@"02-arrow-east.png" andSelectorAction:@selector(goFwd:) width:19 height:16];
@@ -127,6 +126,7 @@
 
 
     - (void)webViewDidFinishLoad:(UIWebView *)webView1 {
+        [[self navigationItem] setTitle:self.title];
         [self.webView setHidden:NO];
         [self.activityIndicator stopAnimating];
     }
